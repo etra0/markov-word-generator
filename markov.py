@@ -66,6 +66,9 @@ class Markov:
             for line in main_file:
                 line = self.prepare_line(line)
 
+                if len(line) == 1:
+                    continue
+
                 for i in range(len(line) - 1):
                     curr_char = line[i]
                     next_char = line[i + 1]
