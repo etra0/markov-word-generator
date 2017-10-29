@@ -7,7 +7,7 @@ import re
 letters = list("abcdefghijklmnñopqrstuvwxyz ")
 
 def clean_tildes(text):
-    """En el caso del español, tenemos las tildes que no importan en este contexto, por lo tanto 
+    """En el caso del español, tenemos las tildes que no importan en este contexto, por lo tanto
     son quitadas."""
     special_chars = { 'á': 'a',
             'é': 'e',
@@ -23,7 +23,7 @@ def clean_tildes(text):
 class Markov:
     """
     This is a class that have a main matrix called main_dataframe that will contain the entire
-    alphabet in the rows and columns. 
+    alphabet in the rows and columns.
     Basically will calculate the probability of the next char depending on the current char.
     """
 
@@ -77,7 +77,7 @@ class Markov:
                         continue
 
                     self.main_dataframe.loc[curr_char][next_char] += 1
-                
+
                 # count the last char as space
                 if curr_char in letters:
                     self.main_dataframe.loc[curr_char][' '] += 1
@@ -88,7 +88,7 @@ class Markov:
             if total:
                 self.main_dataframe.loc[index] = \
                      self.main_dataframe.loc[index]/total
-                     
+
     def generate_words(self, quantity, min_len=0):
         """Once is trained, this function can generate words,
             args:
